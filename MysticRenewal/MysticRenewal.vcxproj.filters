@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Class\Camera.cpp" />
+    <ClCompile Include="Class\Data.cpp" />
+    <ClCompile Include="Class\Sprite3D.cpp" />
+    <ClCompile Include="Interface\Datatype\Point.cpp" />
+    <ClCompile Include="Interface\Datatype\Rect.cpp" />
+    <ClCompile Include="Interface\Datatype\Size.cpp" />
+    <ClCompile Include="Interface\Datatype\Value.cpp" />
+    <ClCompile Include="Interface\Layer.cpp" />
+    <ClCompile Include="Interface\Node.cpp" />
+    <ClCompile Include="Interface\Scene.cpp" />
+    <ClCompile Include="Interface\Sprite.cpp" />
+    <ClCompile Include="Interface\Texture.cpp" />
+    <ClCompile Include="Main\Direct3dx.cpp" />
+    <ClCompile Include="Main\Director.cpp" />
+    <ClCompile Include="Main\DirectXInput.cpp" />
+    <ClCompile Include="Main\main.cpp" />
+    <ClCompile Include="Manager\FileManager.cpp" />
+    <ClCompile Include="Manager\SceneManager.cpp" />
+    <ClCompile Include="Manager\TextureManager.cpp" />
+    <ClCompile Include="Scene\IngameScene.cpp" />
+    <ClCompile Include="Scene\LogoScene.cpp" />
+    <ClCompile Include="Stdafx.cpp" />
+    <ClCompile Include="Scene\Utill\MaptoolScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Class\Camera.h" />
+    <ClInclude Include="Class\Data.h" />
+    <ClInclude Include="Class\Sprite3D.h" />
+    <ClInclude Include="Interface\Datatype\Point.h" />
+    <ClInclude Include="Interface\Datatype\Rect.h" />
+    <ClInclude Include="Interface\Datatype\Size.h" />
+    <ClInclude Include="Interface\Datatype\Value.h" />
+    <ClInclude Include="Interface\Layer.h" />
+    <ClInclude Include="Interface\Node.h" />
+    <ClInclude Include="Interface\Scene.h" />
+    <ClInclude Include="Interface\Sprite.h" />
+    <ClInclude Include="Interface\Texture.h" />
+    <ClInclude Include="Main\Direct3dx.h" />
+    <ClInclude Include="Main\Director.h" />
+    <ClInclude Include="Main\DirectXInput.h" />
+    <ClInclude Include="Manager\FileManager.h" />
+    <ClInclude Include="Manager\SceneManager.h" />
+    <ClInclude Include="Manager\TextureManager.h" />
+    <ClInclude Include="Scene\IngameScene.h" />
+    <ClInclude Include="Scene\LogoScene.h" />
+    <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="system.h" />
+    <ClInclude Include="Scene\Utill\MaptoolScene.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MysticRenewal.rc" />
+  </ItemGroup>
+</Project>
