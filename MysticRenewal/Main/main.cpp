@@ -113,12 +113,12 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine,
 	//CSceneManager::GetInstance()->PushScene(1, CSageScene::Scene());	//·Î°í¾À (1¹ø¾À)
 #else
 //	CSceneManager::GetInstance()->PushScene(1, CLogoScene::Scene());	//·Î°í¾À (1¹ø¾À)
-//	CSceneManager::GetInstance()->PushScene(1, CIngameScene::Scene());	//·Î°í¾À (1¹ø¾À)
+	CSceneManager::GetInstance()->PushScene(1, CIngameScene::Scene());	//·Î°í¾À (1¹ø¾À)
 
 	//////////////////////////////////////////////////////////////////////////
 	//Tool
 	//////////////////////////////////////////////////////////////////////////
-	CSceneManager::GetInstance()->PushScene(1, MaptoolScene::Scene());	//·Î°í¾À (1¹ø¾À)
+//	CSceneManager::GetInstance()->PushScene(1, MaptoolScene::Scene());	//·Î°í¾À (1¹ø¾À)
 
 
 

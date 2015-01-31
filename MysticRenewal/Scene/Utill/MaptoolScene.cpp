@@ -29,6 +29,10 @@ MaptoolScene::~MaptoolScene()
 {
 	CloseDlg();
 	GdiplusShutdown(gpToken);
+	for (int i = 0; i < m_TileWidthCnt; ++i) {
+		delete[] m_Crash_Blocks[i];
+	}
+	delete[] m_Crash_Blocks;
 }
 
 void MaptoolScene::init()
@@ -610,6 +614,14 @@ BOOL MaptoolScene::Object_Proc_st(HWND hDlg, UINT iMSg, WPARAM wParam, LPARAM lP
 			ColorNode->Set_Visible(true);
 			SelectTile->Set_Visible(false);
 			break;
+		case IDC_BUTTON3:
+			//저장
+			Save();
+			break;
+		case IDC_BUTTON4:
+			//불러오기
+			Load();
+			break;
 		case IDCANCEL:
 			DestroyWindow(hDlg);
 			m_hDlg = NULL;
@@ -618,6 +630,153 @@ BOOL MaptoolScene::Object_Proc_st(HWND hDlg, UINT iMSg, WPARAM wParam, LPARAM lP
 		break;
 	}
 	return 0;
+}
+
+void MaptoolScene::Save()
+{
+	OPENFILENAME ofn;
+	char lpstrFile[300] = "";
+	char lpstrFileTitle[50] = "";
+	char filter[] = "맵 파일(*Jmdb)\0*.Jmdb\0";
+
+	memset(&ofn, 0, sizeof(ofn));
+	ofn.lStructSize = sizeof(ofn);
+	ofn.hwndOwner = Director::GetInstance()->Get_Window_hWnd();
+	ofn.lpstrFilter = filter;
+	ofn.lpstrFile = lpstrFile;
+	ofn.nMaxFile = 300;
+	ofn.lpstrFileTitle = lpstrFileTitle; //파일 이름
+	ofn.nMaxFileTitle = 50;
+	ofn.lpstrInitialDir = ".";
+
+	if (GetSaveFileName(&ofn) != 0)
+	{
+		char addr[300];
+		wsprintf(addr, "%s.Jmdb", lpstrFile);
+		FILE *fp = fopen(addr, "wt+");
+		const char* pTemp;
+
+		fprintf(fp, "Mystic Arts MapDataFile \n 제작자 : 조원우 \n 연락처 : 01035399774\n\n");
+
+		fprintf(fp, "Texture Count = %d\n\n", m_TileVector.size());
+		auto iter = m_TileVector.begin();
+		for (; iter != m_TileVector.end(); ++iter)
+		{
+			pTemp = (*iter)->Get_FileName();
+			fprintf(fp, "FileName = %s PositionX = %f, PositionY = %f, textureRectX = %f, textureRectY = %f, textureRectWidth = %f, textureRectHeight = %f, ScaleX = %f, ScaleY = %f \n",
+				pTemp,
+				(*iter)->GetPositionX(),
+				(*iter)->GetPositionY(),
+				(*iter)->GetContentRect().m_positon.x,
+				(*iter)->GetContentRect().m_positon.y,
+				(*iter)->GetContentRect().m_size.width,
+				(*iter)->GetContentRect().m_size.height,
+				(*iter)->GetScaleX(),
+				(*iter)->GetScaleY()
+				);
+		}
+		
+
+		fprintf(fp, "BoundingBox Count = %d\n\n", m_TileWidthCnt);
+		for (int i = 0; i < m_TileWidthCnt; i++)
+		{
+			for (int j = 0; j < m_TileWidthCnt; j++)
+			{
+				fprintf(fp, "%d,", m_Crash_Blocks[j][i]);
+			}
+			fprintf(fp, "\n");
+		}
+
+		fclose(fp);
+	}
+}
+
+void MaptoolScene::Load()
+{
+	OPENFILENAME ofn;
+	char lpstrFile[300] = "";
+	char lpstrFileTitle[50] = "";
+	char filter[] = "맵 파일(*Jmdb)\0*.Jmdb\0";
+
+	memset(&ofn, 0, sizeof(ofn));
+	ofn.lStructSize = sizeof(ofn);
+	ofn.hwndOwner = Director::GetInstance()->Get_Window_hWnd();
+	ofn.lpstrFilter = filter;
+	ofn.lpstrFile = lpstrFile;
+	ofn.nMaxFile = 300;
+	ofn.lpstrFileTitle = lpstrFileTitle; //파일 이름
+	ofn.nMaxFileTitle = 50;
+	ofn.lpstrInitialDir = ".";
+
+	if (GetOpenFileName(&ofn) != 0)
+	{
+		char addr[300];
+		FILE* fp = fopen(lpstrFile, "rt");
+		const char* pTemp;
+
+		fscanf(fp, "Mystic Arts MapDataFile \n 제작자 : 조원우 \n 연락처 : 01035399774\n\n");
+
+		int cnt = 0;
+		LPCSprite pTempSprite;
+		float pX, pY;
+		float pTempSizeX, pTempSizeY, pTempSizeW, pTempSizeH;
+		float pScaleX, pScaleY;
+		fscanf(fp, "Texture Count = %d\n\n", &cnt);
+		for (int i = 0; i < cnt; i++)
+		{
+			fscanf(fp, "FileName = %s PositionX = %f, PositionY = %f, textureRectX = %f, textureRectY = %f, textureRectWidth = %f, textureRectHeight = %f, ScaleX = %f, ScaleY = %f \n",
+				addr,
+				&pX,
+				&pY,
+				&pTempSizeX,
+				&pTempSizeY,
+				&pTempSizeW,
+				&pTempSizeH,
+				&pScaleX, 
+				&pScaleY
+				);
+			pTempSprite = new CSprite();
+			pTempSprite->initWithFile(addr, CRect(pTempSizeX, pTempSizeY, pTempSizeW, pTempSizeH));
+			pTempSprite->SetPosition(pX, pY);
+			pTempSprite->SetScale(pScaleX, pScaleY);
+			m_TileVector.push_back(pTempSprite);
+			this->AddChild(pTempSprite, 2);
+		}
+
+		int width = 640 / m_TileWidthCnt;
+		int height = 480 / m_TileWidthCnt;
+		//m_Crash_Blocks = new int*[m_TileWidthCnt];
+		//for (int i = 0; i < m_TileWidthCnt; ++i)
+		//{
+		//	m_Crash_Blocks[i] = new int[m_TileWidthCnt];
+		//	memset(m_Crash_Blocks[i], 0, sizeof(int)*m_TileWidthCnt);   // 메모리 공간을 0으로 초기화
+		//}
+		for (int i = 0; i < m_TileWidthCnt; i++)
+		{
+			for (int j = 0; j < m_TileWidthCnt; j++)
+			{
+				m_Crash_Blocks[j][i] = 0;
+			}
+		}
+
+		int value;
+		fscanf(fp, "BoundingBox Count = %d\n\n",&cnt);
+		for (int i = 0; i < cnt; i++)
+		{
+			for (int j = 0; j < cnt; j++)
+			{
+				fscanf(fp, "%d,", &value);
+				m_Crash_Blocks[j][i] = value;
+				if (value != 0 && value != 1 && value != 2)
+				{
+					CCLog("에러");
+				}
+			}
+			fscanf(fp, "\n");
+		}
+
+		fclose(fp);
+	}
 }
 
 //수정, std Vector를 사용하는것이 좀더 효율적으로 보임.

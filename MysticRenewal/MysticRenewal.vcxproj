@@ -39,8 +39,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\won\Desktop\Project\MysticRenewal\MysticRenewal;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\won\Desktop\Project\MysticRenewal\MysticRenewal\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(MSBuildProjectDirectory);$(IncludePath)</IncludePath>
+    <LibraryPath>$(MSBuildProjectDirectory)\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -86,6 +86,7 @@
     <ClCompile Include="Manager\FileManager.cpp" />
     <ClCompile Include="Manager\SceneManager.cpp" />
     <ClCompile Include="Manager\TextureManager.cpp" />
+    <ClCompile Include="Scene\Object\GameObjectInit.cpp" />
     <ClCompile Include="Scene\Utill\MaptoolScene.cpp" />
     <ClCompile Include="Scene\IngameScene.cpp" />
     <ClCompile Include="Scene\LogoScene.cpp" />
@@ -111,6 +112,7 @@
     <ClInclude Include="Manager\SceneManager.h" />
     <ClInclude Include="Manager\TextureManager.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Scene\Object\GameObjectInit.h" />
     <ClInclude Include="Scene\Utill\MaptoolScene.h" />
     <ClInclude Include="Scene\IngameScene.h" />
     <ClInclude Include="Scene\LogoScene.h" />

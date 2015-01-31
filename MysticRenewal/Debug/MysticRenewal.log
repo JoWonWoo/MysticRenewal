@@ -1,4 +1,34 @@
-﻿  MaptoolScene.cpp
-c:\users\won\desktop\project\mysticrenewal\mysticrenewal\scene\utill\maptoolscene.cpp(592): warning C4101: 'ps' :참조되지 않은 지역 변수입니다.
-c:\users\won\desktop\project\mysticrenewal\mysticrenewal\scene\utill\maptoolscene.cpp(591): warning C4101: 'hdc' :참조되지 않은 지역 변수입니다.
-  MysticRenewal.vcxproj -> C:\Users\won\Desktop\Project\MysticRenewal\Debug\MysticRenewal.exe
+﻿빌드 시작: 2015-02-01 오전 3:52:23
+     1>2 노드의 "C:\Users\Silisia\Desktop\project\MysticRenewal\MysticRenewal\MysticRenewal.vcxproj" 프로젝트(Build 대상)입니다.
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Silisia\Desktop\project\MysticRenewal\Debug\MysticRenewal.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Silisia\Desktop\project\MysticRenewal\Debug\MysticRenewal.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Silisia\Desktop\project\MysticRenewal\Debug\MysticRenewal.lib" /MACHINE:X86 Debug\MysticRenewal.res
+         Debug\Camera.obj
+         Debug\Data.obj
+         Debug\Sprite3D.obj
+         Debug\Point.obj
+         Debug\Rect.obj
+         Debug\Size.obj
+         Debug\Value.obj
+         Debug\Layer.obj
+         Debug\Node.obj
+         Debug\Scene.obj
+         Debug\Sprite.obj
+         Debug\Texture.obj
+         Debug\Direct3dx.obj
+         Debug\Director.obj
+         Debug\DirectXInput.obj
+         Debug\main.obj
+         Debug\FileManager.obj
+         Debug\SceneManager.obj
+         Debug\TextureManager.obj
+         Debug\MaptoolScene.obj
+         Debug\IngameScene.obj
+         Debug\LogoScene.obj
+         Debug\Stdafx.obj
+         LINK : C:\Users\Silisia\Desktop\project\MysticRenewal\Debug\MysticRenewal.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+         MysticRenewal.vcxproj -> C:\Users\Silisia\Desktop\project\MysticRenewal\Debug\MysticRenewal.exe
+     1>"C:\Users\Silisia\Desktop\project\MysticRenewal\MysticRenewal\MysticRenewal.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:00.42

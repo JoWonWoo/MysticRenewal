@@ -18,5 +18,16 @@ public:
 
 
 	CSprite * m_BackGround;
+
+
+	void MapDataLoad(const char * Filename);
+
+
+private:
+	std::vector<LPCSprite> m_TileVector;
+	int m_TileWidthCnt;	//타일의 가로갯수.
+	int ** m_Crash_Blocks;
 };
+
+
 

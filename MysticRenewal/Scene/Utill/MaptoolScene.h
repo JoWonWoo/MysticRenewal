@@ -103,6 +103,11 @@ public:
 		ECrashBoxSetting
 	};
 	int mMapToolState;
+
+	
+	void Save();
+	void Load();
+
 };
 
 class ColorBoxNode :

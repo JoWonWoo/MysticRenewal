@@ -24,6 +24,7 @@
     <ClCompile Include="Scene\LogoScene.cpp" />
     <ClCompile Include="Stdafx.cpp" />
     <ClCompile Include="Scene\Utill\MaptoolScene.cpp" />
+    <ClCompile Include="Scene\Object\GameObjectInit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Camera.h" />
@@ -50,6 +51,7 @@
     <ClInclude Include="system.h" />
     <ClInclude Include="Scene\Utill\MaptoolScene.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Scene\Object\GameObjectInit.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MysticRenewal.rc" />
